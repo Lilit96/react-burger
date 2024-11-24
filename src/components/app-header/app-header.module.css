@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    height: 56px;
+    padding-top: 16px;
+    margin: auto;
+}
+
+.buttonWrapper {
+    width: 383px;
+    height: 56px;
+    display: flex;
+}
+
