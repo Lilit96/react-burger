@@ -7,7 +7,7 @@ const AppHeader = () => {
         <header className={styles.header}>
             <div >
                 <Button
-                    htmltype="button"
+                    htmlType="button"
                     type="secondary"
                     size="large"
                 >
@@ -15,17 +15,17 @@ const AppHeader = () => {
                     Конструктор
                 </Button>
                 <Button
-                    htmltype="button"
+                    htmlType="button"
                     type="secondary"
                     size="large"
                 >
-                    <ListIcon  />
+                    <ListIcon type="secondary"/>
                     Лента заказов
                 </Button>
             </div>
             <Logo />
-            <Button htmltype="button">
-                <ProfileIcon />
+            <Button htmlType="button">
+                <ProfileIcon  type="secondary"/>
                 Личный кабинет
             </Button>
         </header>
