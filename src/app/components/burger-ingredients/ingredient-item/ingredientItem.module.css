@@ -1,0 +1,31 @@
+.ingredient-item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: calc(50% - 12px);
+	height: 208px;
+	padding: 0;
+	text-align: center;
+	cursor: pointer;
+}
+
+.product-portal {
+	/* border: 4px double blue; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	width: auto;
+	height: auto;
+	margin-top: 20px;
+}
+
+.product-energy {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 30px;
+	margin-top: 20px;
+}

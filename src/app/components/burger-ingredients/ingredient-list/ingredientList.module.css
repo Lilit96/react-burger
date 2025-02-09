@@ -1,0 +1,6 @@
+.ingredient-list {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 24px;
+	width: 100%;
+}

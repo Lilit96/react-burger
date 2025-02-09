@@ -10,6 +10,7 @@ module.exports = {
 			version: 'detect',
 		},
 	},
+	"plugins": ["jsx-a11y"],
 	extends: [
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
@@ -32,5 +33,6 @@ module.exports = {
 		'react/jsx-uses-react': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
+		"jsx-a11y/no-static-element-interactions": "off"
 	},
 };
