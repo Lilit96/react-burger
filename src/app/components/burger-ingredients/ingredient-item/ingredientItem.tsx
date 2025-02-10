@@ -5,8 +5,6 @@ import {
 	CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Ingredient } from '../../../../services/utils/interfaces';
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../../../services/store';
 import { useDrag } from 'react-dnd';
 
 interface IngProps {
@@ -22,9 +20,6 @@ const IngredientItem: FC<IngProps> = ({ data, setOpenModal }) => {
 			isDrag: monitor.isDragging(),
 		}),
 	});
-	const orderDetailsRequest = useSelector(
-		(state: RootState) => state.burger.orderDetailsRequest
-	);
 	if (!data) {
 		return null;
 	}
@@ -39,8 +34,10 @@ const IngredientItem: FC<IngProps> = ({ data, setOpenModal }) => {
 					onClick={setOpenModal}
 					ref={dragRef}>
 					<img src={data.image} alt={data.name} />
-					<span style={{ display: 'inline-flex' }}>
-						<span style={{ marginRight: '8px' }}>{data.price}</span>{' '}
+					<span className={styles['ingredient-item-span']}>
+						<span className={styles['ingredient-item-price']}>
+							{data.price}
+						</span>{' '}
 						<CurrencyIcon type='primary' />
 					</span>
 					<span className='text text_type_main-small'>{data.name}</span>

@@ -29,3 +29,11 @@
 	gap: 30px;
 	margin-top: 20px;
 }
+
+.ingredient-item-span {
+	display: inline-flex;
+}
+
+.ingredient-item-price {
+	margin-right: 8px;
+}
