@@ -60,6 +60,7 @@
 		"commit": "yarn test && cz"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^2.5.1",
 		"@ya.praktikum/react-developer-burger-ui-components": "^1.14.2",
 		"classnames": "^2.5.1",
 		"clsx": "^2.1.0",
