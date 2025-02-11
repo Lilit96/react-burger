@@ -1,0 +1,17 @@
+.app{
+	width: 1240px;
+	min-height: 100vh;
+	margin: 0 auto;
+}
+
+.main {
+	display: flex;
+	justify-content: space-between;
+	gap: 40px;
+	width: 100%;
+}
+
+.test {
+	flex: 1;
+	padding-top: 150px;
+}

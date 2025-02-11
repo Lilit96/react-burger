@@ -1,32 +1,55 @@
-import clsx from 'clsx';
-import { useState } from 'react';
-import s from './app.module.scss';
-import reactLogo from './assets/react.svg';
-import { ReactComponent as TypescriptLogo } from './assets/typescript.svg';
+// import { useEffect, useState } from 'react';
+// import { API_URL } from './utils/constants';
+import AppHeader from './components/app-header/appHeader';
+import BurgerIngredients from './components/burger-ingredients/burgerIngredients';
+// import BurgerConstructor from './components/burger-constructor/BurgerConstructor';
+import styles from './app.module.css';
+import { addCount, fetchIngredients } from '../services/reducers/burger';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import React, { useEffect } from 'react';
+import { RootState, useAppDispatch } from '../services/store';
+import BurgerConstructor from './components/burger-constructor/burgerConstructor';
+import { useSelector } from 'react-redux';
+import { Ingredient } from '../services/utils/interfaces';
 
 export const App = () => {
-	// const num = 0
-	const [count, setCount] = useState(0);
+	const dispatch = useAppDispatch();
+	const ingredientsData = useSelector(
+		(state: RootState) => state.burger.ingredients
+	);
+	const [elements, setElements] = React.useState<Ingredient[]>([]);
+	const [draggedElements, setDraggedElements] = React.useState<Ingredient[]>(
+		[]
+	);
+	useEffect(() => {
+		dispatch(fetchIngredients());
+	}, [dispatch]);
+	useEffect(() => {
+		setElements(ingredientsData);
+	}, [ingredientsData]);
+
+	const handleDrop = (itemId: Ingredient) => {
+		dispatch(addCount(itemId));
+		setDraggedElements([
+			...draggedElements,
+			...elements.filter((element: Ingredient) => element._id === itemId._id),
+		]);
+	};
+
 	return (
-		<div className='page'>
-			<div className='logo-wrapper'>
-				<a href='https://reactjs.org' target='_blank' rel='noreferrer'>
-					<img
-						src={reactLogo}
-						className={clsx(s.logo, s.react)}
-						alt='React logo'
+		<div className={styles.app}>
+			<AppHeader />
+
+			<main className={styles.main}>
+				<DndProvider backend={HTML5Backend}>
+					<BurgerIngredients />
+					<BurgerConstructor
+						onDropHandler={handleDrop}
+						draggedElements={draggedElements}
 					/>
-				</a>
-				<a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
-					<TypescriptLogo className={s.logo} />
-				</a>
-			</div>
-			<h1>React + TS</h1>
-			<div className={s.card}>
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-			</div>
+				</DndProvider>
+			</main>
 		</div>
 	);
 };
